@@ -10,9 +10,9 @@ _xanmodrel=1
 _xanmodrev=
 pkgrel=1
 
-pkgbase=${_pkgbase}-linux-bin-${_arch}
+pkgbase=${_pkgbase}-${_arch}
 pkgver=${_major}.${_minor}
-pkgname=("${pkgbase}" "${_pkgbase}-linux-headers-bin-${_arch}")
+pkgname=("${pkgbase}" "${_pkgbase}-headers-${_arch}")
 pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (LTS) - Prebuilt version - ${_arch}"
 url="http://www.xanmod.org/"
 arch=(x86_64)
@@ -62,7 +62,7 @@ sha256sums=('a2936d4d5d1232ddd7098c3d84f382c6e2c8a5e942278178975e553913c1e2e5'
 
 _package() {
   pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (MAIN) - Prebuilt version - ${_arch}"
-  depends=(coreutils kmod initramfs)
+  depends=("${_pkgbase}-headers-${_arch}" coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES
